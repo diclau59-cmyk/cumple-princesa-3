@@ -1,28 +1,79 @@
+const paragraphs = [
+  "Feliz cumpleaños, mi niña hermosa. ¿Cómo está mi princesa hermosa?",
+  "Recuerdas cuando apenas hablábamos y casi no nos conocíamos, pero siempre estábamos juntos. Son muy bonitos los recuerdos de aquellas primeras llamadas que duraban horas. A veces lo pienso y no comprendo cómo una princesa tan hermosa como tú pudo fijarse en alguien tan simple como yo.",
+  "Si algún día piensas que puedo encontrar a alguien mejor que tú, recuerda que para mí no existe nadie mejor. Tú eres todo lo que quiero; te quiero a ti, te elijo a ti y no deseo a nadie más que a mi princesa perfecta.",
+  "No quiero un mundo sin ti, mi niña hermosa, porque volvería a sentirme solo y triste. Quiero tenerte a mi lado, pasar todo el día contigo como antes. Y quiero hacerte una pregunta: ¿Has pensado si pasarías una vida conmigo?",
+  "Solo recuerda que siempre te voy a elegir a ti por encima de todos. No importa lo que pase, mi corazón siempre te escogerá a ti. Voy a seguir luchando por tu amor hasta el día en que tú me pidas que pare, porque eres la persona que más amo y con quien quiero compartir mi vida.",
+  "Te amo muchísimo, mi niña hermosa. Gracias por existir y por hacer mi vida más feliz."
+];
+
 let started=false;
 let playing=false;
 
-const inicio=document.getElementById("inicio");
-const pagina=document.getElementById("pagina");
-const abrirBtn=document.getElementById("abrirBtn");
+const cover=document.getElementById("cover");
+const page=document.getElementById("page");
+const openBtn=document.getElementById("openBtn");
+const envelope=document.getElementById("envelope");
+const typedText=document.getElementById("typedText");
+const finalTitle=document.getElementById("finalTitle");
+const signature=document.getElementById("signature");
+const fireworks=document.getElementById("fireworks");
 const audio=document.getElementById("audio");
 const musicBtn=document.getElementById("musicBtn");
-const musicIcon=document.querySelector(".icono");
+const musicIcon=document.getElementById("musicIcon");
 
-abrirBtn.addEventListener("click",abrirRegalo);
+openBtn.addEventListener("click",openGift);
 musicBtn.addEventListener("click",toggleMusic);
 
-function abrirRegalo(){
-  inicio.style.opacity="0";
+function openGift(){
+  envelope.classList.add("open");
+
+  setTimeout(()=>cover.style.opacity="0",850);
+
   setTimeout(()=>{
-    inicio.style.display="none";
-    pagina.classList.remove("oculto");
+    cover.style.display="none";
+    page.classList.remove("hidden");
+
     if(!started){
       started=true;
-      crearFlores();
-      crearCorazones();
-      crearDestellos();
+      typeLetter();
+      startEffects();
+      audio.play().then(()=>{
+        playing=true;
+        musicIcon.textContent="⏸";
+      }).catch(()=>{});
     }
-  },700);
+  },1450);
+}
+
+function typeLetter(){
+  let index=0;
+
+  function addNext(){
+    if(index>=paragraphs.length){
+      finalTitle.classList.remove("hidden");
+      signature.classList.remove("hidden");
+      setTimeout(()=>fireworks.classList.remove("hidden"),900);
+      return;
+    }
+
+    const p=document.createElement("p");
+    typedText.appendChild(p);
+    const text=paragraphs[index];
+    let i=0;
+
+    const interval=setInterval(()=>{
+      p.textContent+=text[i];
+      i++;
+      if(i>=text.length){
+        clearInterval(interval);
+        index++;
+        setTimeout(addNext,250);
+      }
+    },14);
+  }
+
+  addNext();
 }
 
 function toggleMusic(){
@@ -31,7 +82,7 @@ function toggleMusic(){
       playing=true;
       musicIcon.textContent="⏸";
     }).catch(()=>{
-      alert("No se pudo reproducir. Revisa que el archivo se llame sienna.mp3 y esté en esta misma carpeta.");
+      alert("No se pudo reproducir. Revisa que sienna.mp3 esté en esta misma carpeta.");
     });
   }else{
     audio.pause();
@@ -40,7 +91,13 @@ function toggleMusic(){
   }
 }
 
-function crearFlores(){
+function startEffects(){
+  flowers();
+  hearts();
+  sparkles();
+}
+
+function flowers(){
   const flores=["🌸","🌼","🌹","🌻","💮"];
   setInterval(()=>{
     const f=document.createElement("div");
@@ -51,10 +108,10 @@ function crearFlores(){
     f.style.animationDuration=(9+Math.random()*9)+"s";
     document.body.appendChild(f);
     setTimeout(()=>f.remove(),19000);
-  },650);
+  },620);
 }
 
-function crearCorazones(){
+function hearts(){
   setInterval(()=>{
     const h=document.createElement("div");
     h.className="heart";
@@ -63,10 +120,10 @@ function crearCorazones(){
     h.style.fontSize=(18+Math.random()*24)+"px";
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),6500);
-  },1250);
+  },1150);
 }
 
-function crearDestellos(){
+function sparkles(){
   setInterval(()=>{
     const s=document.createElement("div");
     s.className="spark";

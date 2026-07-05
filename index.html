@@ -11,52 +11,54 @@
 </head>
 <body>
 
-<div id="inicio" class="inicio">
-  <div class="sobre-inicio">
-    <div class="sobre-tapa"></div>
-    <div class="sobre-cuerpo">
-      <h1>💌 Para Mi Princesa 💛</h1>
-      <p>Preparé este pequeño regalo con mucho cariño para ti.</p>
-      <button id="abrirBtn">Abrir mi regalo 🌻</button>
+<section id="cover" class="cover">
+  <div class="night-glow"></div>
+
+  <div class="envelope" id="envelope">
+    <div class="envelope-back"></div>
+    <div class="letter-peek">
+      <h1>Para Mi Princesa</h1>
+      <p>Un pequeño regalo hecho con mucho amor.</p>
     </div>
+    <div class="flap"></div>
+    <div class="envelope-front"></div>
+    <button id="openBtn" class="open-btn">💌 Abrir mi regalo 🌻</button>
   </div>
-</div>
+</section>
 
-<main id="pagina" class="pagina oculto">
-  <section class="escena">
+<main id="page" class="page hidden">
+  <div class="sun-glow"></div>
 
-    <article class="carta">
-      <div class="sobre-fondo"></div>
-
-      <h1>🌻 Para Mi Princesa Perfecta 🌻</h1>
-      <div class="separador">— 💛 —</div>
-
-      <p>Feliz cumpleaños, mi niña hermosa. ¿Cómo está mi princesa hermosa?</p>
-
-      <p>Recuerdas cuando apenas hablábamos y casi no nos conocíamos, pero siempre estábamos juntos. Son muy bonitos los recuerdos de aquellas primeras llamadas que duraban horas. A veces lo pienso y no comprendo cómo una princesa tan hermosa como tú pudo fijarse en alguien tan simple como yo.</p>
-
-      <p>Si algún día piensas que puedo encontrar a alguien mejor que tú, recuerda que para mí no existe nadie mejor. Tú eres todo lo que quiero; te quiero a ti, te elijo a ti y no deseo a nadie más que a mi princesa perfecta.</p>
-
-      <p>No quiero un mundo sin ti, mi niña hermosa, porque volvería a sentirme solo y triste. Quiero tenerte a mi lado, pasar todo el día contigo como antes. Y quiero hacerte una pregunta: ¿Has pensado si pasarías una vida conmigo?</p>
-
-      <p>Solo recuerda que siempre te voy a elegir a ti por encima de todos. No importa lo que pase, mi corazón siempre te escogerá a ti. Voy a seguir luchando por tu amor hasta el día en que tú me pidas que pare, porque eres la persona que más amo y con quien quiero compartir mi vida.</p>
-
-      <p>Te amo muchísimo, mi niña hermosa. Gracias por existir y por hacer mi vida más feliz.</p>
-
-      <h2>❤️ Feliz Cumpleaños, mi Princesa Perfecta 🌻</h2>
-      <div class="firma">✨ Siempre sere tuyo ✨</div>
+  <section class="scene">
+    <article class="scroll-card">
+      <div class="scroll-top"></div>
+      <div class="scroll-paper">
+        <h1>🌻 Para Mi Princesa Perfecta 🌻</h1>
+        <div class="divider">— 💛 —</div>
+        <div id="typedText" class="typed-text"></div>
+        <h2 id="finalTitle" class="final-title hidden">❤️ Feliz Cumpleaños, mi Princesa Perfecta 🌻</h2>
+        <div id="signature" class="signature hidden">✨ Siempre tuyo ✨</div>
+      </div>
+      <div class="scroll-bottom"></div>
     </article>
 
-    <aside class="purin-area">
-      <div class="globo">🌻 ¡Feliz Cumpleaños! 💛</div>
+    <aside class="purin-zone">
+      <div class="speech">🌻 ¡Feliz Cumpleaños! 💛</div>
       <img src="pompompurin.png" class="purin" alt="Pompompurin con girasol">
     </aside>
-
   </section>
 
-  <div class="musica">
+  <div id="fireworks" class="fireworks hidden">
+    <div class="firework f1">✨</div>
+    <div class="firework f2">💛</div>
+    <div class="firework f3">🌻</div>
+    <div class="firework f4">❤️</div>
+    <h2>Te amo muchísimo 💛</h2>
+  </div>
+
+  <div class="player">
     <button id="musicBtn" class="music-btn">
-      <span class="icono">▶</span>
+      <span id="musicIcon" class="music-icon">▶</span>
       <span>
         <strong>Nuestra canción</strong>
         <small>Sienna 💛</small>
@@ -64,7 +66,6 @@
     </button>
     <audio id="audio" loop>
       <source src="sienna.mp3" type="audio/mpeg">
-      <source src="sienna.wav" type="audio/wav">
     </audio>
   </div>
 </main>
