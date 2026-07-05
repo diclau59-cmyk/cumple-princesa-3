@@ -52,6 +52,7 @@ function typeLetter(){
   function addNext(){
     if(index>=paragraphs.length){
       finalTitle.classList.remove("hidden");
+      const heartBtn=document.getElementById("heartBtn"); if(heartBtn){heartBtn.classList.remove("hidden");}
       signature.classList.remove("hidden");
       setTimeout(()=>fireworks.classList.remove("hidden"),900);
       return;
@@ -135,3 +136,37 @@ function sparkles(){
     setTimeout(()=>s.remove(),2200);
   },650);
 }
+
+
+// Extra Deluxe: botón final con lluvia de corazones y girasoles con viento
+setTimeout(()=>{
+  const heartBtn=document.getElementById("heartBtn");
+  if(heartBtn){
+    heartBtn.addEventListener("click",()=>burstHeartsDeluxe(60));
+  }
+},1000);
+
+function burstHeartsDeluxe(amount){
+  for(let i=0;i<amount;i++){
+    setTimeout(()=>{
+      const h=document.createElement("div");
+      h.className="heart";
+      h.textContent=Math.random()<.5?"💛":"❤️";
+      h.style.left=(5+Math.random()*90)+"vw";
+      h.style.fontSize=(22+Math.random()*30)+"px";
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),6500);
+    },i*22);
+  }
+}
+
+setInterval(()=>{
+  const items=["🌻","🌼","🍃"];
+  const w=document.createElement("div");
+  w.className="windflower";
+  w.textContent=items[Math.floor(Math.random()*items.length)];
+  w.style.top=(20+Math.random()*55)+"vh";
+  w.style.animationDuration=(10+Math.random()*7)+"s";
+  document.body.appendChild(w);
+  setTimeout(()=>w.remove(),18000);
+},3500);

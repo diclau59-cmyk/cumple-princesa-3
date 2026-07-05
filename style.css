@@ -453,3 +453,34 @@ body::before{
   .music-icon{width:44px;height:44px}
   .fireworks h2{font-size:38px;width:90%;text-align:center}
 }
+
+
+/* Botón final de corazones */
+.heart-btn{
+  margin-top:22px;
+  padding:14px 26px;
+  border:none;
+  border-radius:50px;
+  font-size:17px;
+  font-weight:800;
+  color:white;
+  background:linear-gradient(135deg,#ff6b81,#ff1744);
+  box-shadow:0 0 24px rgba(255,23,68,.45);
+  cursor:pointer;
+  transition:.25s;
+}
+.heart-btn:hover{transform:scale(1.06)}
+
+/* Girasoles que cruzan con viento */
+.windflower{
+  position:fixed;
+  pointer-events:none;
+  z-index:3;
+  font-size:34px;
+  opacity:.8;
+  animation:wind 12s linear forwards;
+}
+@keyframes wind{
+  from{left:-8vw;transform:translateY(0) rotate(0)}
+  to{left:108vw;transform:translateY(-80px) rotate(360deg);opacity:0}
+}
